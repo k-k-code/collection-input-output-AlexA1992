@@ -1,45 +1,60 @@
+/*
 package com.brunoyam.unit7;
 
 import java.io.*;
 import java.util.Scanner;
 
+*/
 /**
  * Класс-пример чтения из файлов и записи в файлы используя различные потоки ввода-вывода.
- */
+ *//*
+
 public class NeighbourReader {
 
-    /**
+    */
+/**
      * Массив предопределенных объектов типа {@link com.brunoyam.unit7.Neighbour Neighbour}.
-     */
-    private Neighbour[] neighbours = {
+     *//*
+
+   */
+/* private Neighbour[] neighbours = {
             new Neighbour("Yakov", "Ivanov", "Ivanovich", (byte) 46, "1220"),
             new Neighbour("Ivan", "Ivanov", "Ivanovich", (byte) 35,"1245"),
             new Neighbour("Petr", "Petrov", "Petrovich", (byte) 22,"1250"),
             new Neighbour("Ilona", "Ilonova", "Il'ina", (byte) 57,"1245"),
             new Neighbour("Petr", "Abakin", "Petrovich", (byte) 10,"1255"),
-    };
+    };*//*
 
-    /**
+
+    */
+/**
      * Счетчик отданных объектов из предопределенного массива.
-     */
+     *//*
+
     private int counter = -1;
 
-    /**
+    */
+/**
      * Возвращает по очереди объекты {@link com.brunoyam.unit7.Neighbour Neighbour}
      * из масссива {@link #neighbours neighbours}.
      * @return
-     */
-    public Neighbour nextNeighbour() {
+     *//*
+
+ */
+/*   public Neighbour nextNeighbour() {
         if (counter + 1 < neighbours.length) {
             counter++;
             return neighbours[counter];
         }
         return null;
-    }
+    }*//*
 
-    /**
+
+    */
+/**
      * Читает данные из одного файла и записывает в другой, используя байтовые потоки ввода-выводаю.
-     */
+     *//*
+
     public void readWrite() {
         FileInputStream in = null;
         FileOutputStream out = null;
@@ -79,9 +94,11 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Читает данные из одного файла и записывает в другой, используя потоки ввода-выводаю с буфером.
-     */
+     *//*
+
     public void readWriteBuffered() {
         BufferedInputStream in = null;
         BufferedOutputStream out = null;
@@ -119,9 +136,11 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Читает данные из одного файла и записывает в другой, используя символьные потоки ввода-выводаю.
-     */
+     *//*
+
     public void readWriteChars() {
         FileReader in = null;
         FileWriter out = null;
@@ -161,9 +180,11 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Читает данные из одного файла и записывает в другой, используя символьные потоки ввода-выводаю с буфером.
-     */
+     *//*
+
     public void readWriteCharsBuffered() {
         BufferedReader in = null;
         BufferedWriter out = null;
@@ -198,9 +219,11 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Читает пользовательский ввод и выводит ответ используя консольные потоки ввода вывода.
-     */
+     *//*
+
     public void consoleReadWrite() {
         System.out.println("Укажите значение");
         Scanner sc = new Scanner(System.in);
@@ -213,20 +236,25 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Перечисление, используемое для демонстрационных целей.
-     */
+     *//*
+
     private enum MyEnum {
         MIN,
         AVG,
         MAX;
     }
 
-    /**
+    */
+/**
      * Записывает значения полей объекта в файл и читает из файла, используя потоки ввода-вывода данных.
      * Для записи использует метод {@link #writeData(Neighbour)}, для чтения - {@link #readData(String)}.
-     */
-    public void dataReadWrite() {
+     *//*
+
+*/
+/*    public void dataReadWrite() {
         Neighbour neighbour = new Neighbour("Sergey", "Gerasimov", "Venyamonivich", "567422");
         neighbour.setAge((byte) 45);
         neighbour.setMarried(true);
@@ -235,13 +263,16 @@ public class NeighbourReader {
 
         Neighbour newNeighbour = readData(neighbour.getName() + ".nbr");
 
-    }
+    }*//*
 
-    /**
+
+    */
+/**
      * Записывает значения полей объекта {@link com.brunoyam.unit7.Neighbour Neighbour} в файл, используя потоки
      * ввода-вывода данных.
      * @param neighbour объект для записи.
-     */
+     *//*
+
     private void writeData(Neighbour neighbour) {
         DataOutputStream out = null;
         try (FileOutputStream fos = new FileOutputStream(neighbour.getName() + ".nbr")){
@@ -258,12 +289,14 @@ public class NeighbourReader {
         }
     }
 
-    /**
+    */
+/**
      * Создает новый объект {@link com.brunoyam.unit7.Neighbour Neighbour} и заполняет его поля значениями,
      * прочитанными из файла с помощью потока ввода-вывода данных.
      * @param filename имя файла для чтения.
      * @return новый объект {@link com.brunoyam.unit7.Neighbour}, заполненный данными из файла.
-     */
+     *//*
+
     private Neighbour readData(String filename) {
         File file = new File(filename);
         if (!file.exists() || !file.getName().endsWith(".nbr")) {
@@ -291,9 +324,11 @@ public class NeighbourReader {
         return null;
     }
 
-    /**
+    */
+/**
      * Сериализует объект и записывает в файл используя потоки ввода-вывода объектов.
-     */
+     *//*
+
     public void objectReadWrite() {
         Neighbour neighbour = new Neighbour("Sergey", "Gerasimov", "Venyamonivich", "567422");
         neighbour.setAge((byte) 45);
@@ -319,3 +354,4 @@ public class NeighbourReader {
     }
 
 }
+*/

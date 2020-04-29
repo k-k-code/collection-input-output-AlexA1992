@@ -6,16 +6,16 @@ import java.util.Objects;
 /**
  * Модель жителя района.
  */
-public class Neighbour implements Comparable<Neighbour>, Serializable {
+public class Neighbour {
 
-    /**
-     * Имя.
-     */
-    private String name;
     /**
      * Фамилия.
      */
     private String surname;
+    /**
+     * Имя.
+     */
+    private String name;
     /**
      * Отчество.
      */
@@ -27,7 +27,7 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
     /**
      * Женат/замужем или нет.
      */
-    private boolean married;
+    private String married;
     /**
      * Номер документа удостоверяющего личность.
      */
@@ -40,12 +40,16 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * @param secondName отчество.
      * @param docNumber номер документа, удостоверяющего личность.
      */
-    public Neighbour(String name, String surname, String secondName, String docNumber) {
-        this.name = name;
+    public Neighbour (String surname, String name, String secondName, byte age, String married, String docNumber) {
+
         this.surname = surname;
+        this.name = name;
         this.secondName = secondName;
+        this.age = age;
+        this.married = married;
         this.docNumber = docNumber;
     }
+
 
     /**
      * Конструктор.
@@ -55,11 +59,12 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * @param age возраст.
      * @param docNumber номер документа, удостоверяющего личность.
      */
+    /*
     public Neighbour(String name, String surname, String secondName, byte age, String docNumber) {
         this(name, surname, secondName, docNumber);
         this.age = age;
     }
-
+*/
     /**
      * Геттер.
      * @return имя.
@@ -112,7 +117,7 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * Геттер.
      * @return женат/замужем.
      */
-    public boolean isMarried() {
+    public String isMarried() {
         return married;
     }
 
@@ -120,7 +125,7 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * Сеттер.
      * @return женат/замужем.
      */
-    public void setMarried(boolean married) {
+    public void setMarried(String married) {
         this.married = married;
     }
 
@@ -129,22 +134,22 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * @param o объект с которым сравнивать текущий.
      * @return <code>true</code> если объекты равны, в противном случае <code>false</code>.
      */
-    @Override
+  /*  @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Neighbour neighbour = (Neighbour) o;
+        Neighbour neighbour = Neighbour o;
         return docNumber.equals(neighbour.docNumber);
-    }
+    }*/
 
     /**
      * Возвращает хэш объекта.
      * @return хэш объекта.
      */
-    @Override
+    /*@Override
     public int hashCode() {
         return Objects.hash(docNumber);
-    }
+    }*/
 
     /**
      * Возвращает текстовое представление объекта.
@@ -167,11 +172,11 @@ public class Neighbour implements Comparable<Neighbour>, Serializable {
      * @return положительное число, если текущий объект больше, отрицательно число, если текущий объект меньше, ноль,
      * если объекты равны.
      */
-    @Override
+  /*  @Override
     public int compareTo(Neighbour o) {
         String fullName = surname + " " + name + " " + secondName;
         String fullName2 = o.getSurname() + " " + o.getName() + " " + o.getSecondName();
         return fullName.compareTo(fullName2);
-    }
+    }*/
 
 }

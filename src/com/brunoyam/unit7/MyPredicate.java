@@ -5,14 +5,14 @@ import java.util.function.Predicate;
 /**
  * Демонстрационный пример использования интерфейса {@link java.util.function.Predicate}
  */
-public class MyPredicate implements Predicate<Neighbour> {
-    /**
+/*public class MyPredicate implements Predicate<Neighbour<N>> {
+    *//**
      * {@inheritDoc}
      * @param neighbour сосед для проверки.
      * @return <core>true</core> если сосед старше 21 года, в противном случае <code>false</code>
-     */
+     *//*
     @Override
-    public boolean test(Neighbour neighbour) {
+    public boolean test(Neighbour<N> neighbour) {
         return neighbour.getAge() > 21;
     }
-}
+}*/
