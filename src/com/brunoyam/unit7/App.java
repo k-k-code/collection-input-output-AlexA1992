@@ -1,11 +1,13 @@
 package com.brunoyam.unit7;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.*;
+//import sun.rmi.rmic.IndentingWriter;
 
+import java.io.*;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+//import au.com.bytecode.opencsv.CSVWriter;
 
 /**
  * Демонстрируется сортировка коллекций, лямбды, стримы, работа с потоками ввода-вывода.
@@ -135,40 +137,73 @@ public class App {
         }*/
         //ArrayList<Neighbour> neighbourList = new ArrayList<>(str.name)
 
-        BufferedReader csvFile = new BufferedReader(new FileReader("C:\\Users\\User\\IdeaProjects\\collection-input-output-AlexA1992\\neighbours.csv"));
-        System.out.println(csvFile);
+        /*String s1 = csvFile.nextLine();
+        System.out.println(s1);
+        String s2 = csvFile.nextLine();
+        System.out.println(s2);*/
+        //BufferedReader csvFile = new BufferedReader(new FileReader("C:\\Users\\User\\IdeaProjects\\collection-input-output-AlexA1992\\neighbours.csv"));
+        //System.out.println(csvFile);
         //System.out.println(csvFile.readLine());
         //Scanner myScanner = null;
         //String str = null;
         //System.out.println(str);
-        ArrayList<String> list = new ArrayList<>();
-        while (csvFile.readLine() != null) {
-            //System.out.println((csvFile.readLine()));
-            list.add(csvFile.readLine());
+
+        //создаем коллекцию и открываем файл
+        Scanner csvFile = new Scanner(new FileReader("C:\\Users\\User\\IdeaProjects\\collection-input-output-AlexA1992\\neighbours.csv"));
+        List<String> list = new ArrayList<>();
+
+        //считываем все строки и пихаем в список
+        while (csvFile.hasNext()) {
+            String s = csvFile.nextLine();
+            //System.out.println(s);
+            list.add(s);
         }
+        csvFile.close();
+
+        //проверяем все ли считали
         System.out.println(list.size());
         /*for (int t = 0; t < list.size(); t++){
             System.out.println(list.get(t));
         }*/
 
+        //создаем коллекцию в которую будем запихивать объекты, запихав в них элементы массива person,
+        // в котором хранятся разделенные ";" данные.
         List<Neighbour> neighbours = new ArrayList<>();
         for (int h = 0; h < list.size(); h++) {
             String[] person = list.get(h).split(";");
-            //System.out.println(person[4]);
             Neighbour neighbour = new Neighbour(person[0], person[1], person[2], Byte.parseByte(person[3]), person[4], person[5]);
             neighbours.add(neighbour);
-            System.out.println(neighbour);
         }
 
+        // фильтруем и возвращаем в коллекцию
+        List<Neighbour> theStream = (List<Neighbour>) neighbours.stream()
+                .filter(neighbour -> neighbour.isMarried().equals("женат"))
+                .filter(neighbour -> neighbour.getAge() > 40)
+                .collect(Collectors.toList());
 
-        System.out.println("111");
-        System.out.println(neighbours.getClass().getName());
-        System.out.println(neighbours.size());
-        Collections.sort(neighbours);
-        System.out.println(neighbours.get(0).getSurname());
-       /* for (Neighbour t : neighbours) {
-            System.out.println(t);
+        //сортируем
+        Collections.sort(theStream);
+        System.out.println(theStream);
+
+        //запихиваем в файл лямбдой
+        BufferedWriter newCsv = new BufferedWriter(new FileWriter("C:\\Users\\User\\IdeaProjects\\collection-input-output-AlexA1992\\result.csv"));
+        Stream<Neighbour> theStream2 = theStream.stream();
+        theStream2.forEach(neighbour -> {
+                    try {
+                        newCsv.write((String.valueOf(neighbour + "\n")));
+                        newCsv.write(neighbour.hashCode() + "\n");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+
+        //заносим в файл новую коллекцию. ЭТО СТАРЫЙ ПОДХОД. )))) МОЖНО НЕ ЧИТАТЬ
+        /*
+        for (Neighbour t : neighbours) {
+            newCsv.write(String.valueOf(t + "\n"));
         }*/
 
+        //закрываем файл
+        newCsv.close();
     }
 }
