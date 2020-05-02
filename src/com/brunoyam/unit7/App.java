@@ -2,7 +2,7 @@ package com.brunoyam.unit7;
 
 
 //import sun.rmi.rmic.IndentingWriter;
-
+//import com.opencsv.*;
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -136,7 +136,6 @@ public class App {
             return neighbours;
         }*/
         //ArrayList<Neighbour> neighbourList = new ArrayList<>(str.name)
-
         /*String s1 = csvFile.nextLine();
         System.out.println(s1);
         String s2 = csvFile.nextLine();
@@ -148,7 +147,7 @@ public class App {
         //String str = null;
         //System.out.println(str);
 
-        //создаем коллекцию и открываем файл
+        //создаем коллекцию и открываем фай
         Scanner csvFile = new Scanner(new FileReader("C:\\Users\\User\\IdeaProjects\\collection-input-output-AlexA1992\\neighbours.csv"));
         List<String> list = new ArrayList<>();
 

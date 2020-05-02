@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * Модель жителя района.
  */
-public class Neighbour {
+public class Neighbour implements Comparable <Neighbour> {
 
     /**
      * Фамилия.
@@ -151,19 +151,33 @@ public class Neighbour {
         return Objects.hash(docNumber);
     }*/
 
+    @Override
+    public String toString() {
+        return  "surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", age=" + age +
+                ", married='" + married + '\'' +
+                ", docNumber='" + docNumber + '\'' +
+                '}';
+    }
+
     /**
      * Возвращает текстовое представление объекта.
      * @return текстовое представление объекта.
      */
+
+
     @Override
-    public String toString() {
-        return "Neighbour{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", secondName='" + secondName + '\'' +
-                ", age='" + age + '\'' +
-                ", docNumber='" + docNumber + '\'' +
-                '}';
+    public int compareTo(Neighbour o) {
+        String fullName = surname + " " + name + " " + secondName + " " + age;
+        //Integer hashFullName = fullName.hashCode();
+        String fullName2 =  o.getSurname() + " " + o.getName() + " "  + o.getSecondName() + " " + o.getAge();
+        //Integer hashFullName2 = fullName2.hashCode();
+        return fullName.compareTo(fullName2);
+        /*Byte theAge = age;
+        Byte theAge1 = o.getAge();
+        return theAge.compareTo(theAge1);*/
     }
 
     /**
